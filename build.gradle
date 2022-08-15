@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'qa.guru'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+/*java {
+    toolchain{
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}*/
+compileTestJava{
+    options.encoding = 'UTF-8'
+}
+dependencies {
+    //JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
+
+    //Selenide
+    testImplementation("com.codeborne:selenide:6.6.6")
+    testRuntimeOnly("org.slf4j:slf4j-simple:1.7.36")
+
+    //Faker
+    testImplementation("com.github.javafaker:javafaker:1.0.2")
+}
+
+test {
+    useJUnitPlatform()
+}
