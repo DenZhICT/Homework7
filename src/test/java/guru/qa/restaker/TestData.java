@@ -29,17 +29,25 @@ public class TestData {
     }
 
     private String[] randomStateAndCity() {
-        String[] states = {"NCR","Uttar Pradesh","Haryana","Rajasthan"};
+        String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
         String curState = randomElement(states);
         String[] citys = new String[0];
-        switch (curState){
-            case ("NCR"): citys = new String[]{"Delhi","Gurgaon","Noida"};break;
-            case ("Uttar Pradesh"): citys = new String[]{"Agra","Lucknow","Merrut"};break;
-            case ("Haryana"): citys = new String[]{"Karnal","Panipat"};break;
-            case ("Rajasthan"): citys = new String[]{"Jaipur","Jaiselmer"};break;
+        switch (curState) {
+            case ("NCR"):
+                citys = new String[]{"Delhi", "Gurgaon", "Noida"};
+                break;
+            case ("Uttar Pradesh"):
+                citys = new String[]{"Agra", "Lucknow", "Merrut"};
+                break;
+            case ("Haryana"):
+                citys = new String[]{"Karnal", "Panipat"};
+                break;
+            case ("Rajasthan"):
+                citys = new String[]{"Jaipur", "Jaiselmer"};
+                break;
         }
         String curCity = randomElement(citys);
-        return new String[]{curState,curCity};
+        return new String[]{curState, curCity};
     }
 
     private String randomAddress() {
@@ -73,7 +81,7 @@ public class TestData {
     }
 
     private String randomGender() {
-        String[] gender = {"Male","Female","Other"};
+        String[] gender = {"Male", "Female", "Other"};
         return randomElement(gender);
     }
 
@@ -88,19 +96,21 @@ public class TestData {
     private String randomFirstName() {
         return new Faker().name().firstName();
     }
-    private String[] randomArrayMaker(List<String> list){
+
+    private String[] randomArrayMaker(List<String> list) {
         RandomService faker = new Faker().random();
         int randomLen = faker.nextInt(list.size());
         String[] array = new String[randomLen];
         int randomIndex;
-        for (int i = 0;i < randomLen;i++){
+        for (int i = 0; i < randomLen; i++) {
             randomIndex = faker.nextInt(list.size());
             array[i] = list.get(randomIndex);
             list.remove(randomIndex);
         }
         return array;
     }
-    private String randomElement(String[] list){
+
+    private String randomElement(String[] list) {
         int randomIndex = new Faker().random().nextInt(list.length);
         return list[randomIndex];
     }
