@@ -14,7 +14,7 @@ import java.util.Locale;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegFromPage {
+public class RegFormPage {
     private Setter setInPage = new Setter();
     private Checker matchIt = new Checker();
     private SelenideElement
@@ -33,17 +33,17 @@ public class RegFromPage {
             submitButton = $("#submit");
 
 
-    public RegFromPage openPage() {
+    public RegFormPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         return this;
     }
 
-    public RegFromPage fillPageForm(TestData data) {
+    public RegFormPage fillPageForm(TestData data) {
         setInPage
-                .justSet(firstNameInput, data.fname)
-                .justSet(lastNameInput, data.lname)
+                .justSet(firstNameInput, data.firstName)
+                .justSet(lastNameInput, data.lastName)
                 .justSet(emailInput, data.email);
         this.setGender(data.gender);
         setInPage.justSet(phoneInput, data.phone);
@@ -60,7 +60,7 @@ public class RegFromPage {
         return this;
     }
 
-    public RegFromPage checkPageFrom(TestData data) {
+    public RegFormPage checkPageFrom(TestData data) {
         LocalDate time = LocalDate.parse(data.birth, DateTimeFormatter.ofPattern("MM.dd.yyyy"));
         String newTime = time.format(DateTimeFormatter.ofPattern("dd MMMM,yyyy", new Locale("en")));
 
@@ -74,7 +74,7 @@ public class RegFromPage {
             strVersOfHobbies += ", " + data.hobbies[i];
         }
         matchIt
-                .checkRow("Student Name", data.fname + " " + data.lname)
+                .checkRow("Student Name", data.firstName + " " + data.lastName)
                 .checkRow("Student Email", data.email)
                 .checkRow("Gender", data.gender)
                 .checkRow("Mobile", data.phone)
@@ -87,37 +87,37 @@ public class RegFromPage {
         return this;
     }
 
-    private RegFromPage clickSubmit() {
+    private RegFormPage clickSubmit() {
         submitButton.scrollTo().click();
         return this;
     }
 
-    private RegFromPage setPhoto(String pict) {
+    private RegFormPage setPhoto(String pict) {
         pictUpload.uploadFile(new File("src/test/resources/" + pict));
         return this;
     }
 
-    private RegFromPage setHobbies(String[] hobbies) {
+    private RegFormPage setHobbies(String[] hobbies) {
         for (int i = 0; i < hobbies.length; i++) {
             hobbiesInput.find(byText(hobbies[i])).click();
         }
         return this;
     }
 
-    private RegFromPage setSubj(String[] subj) {
+    private RegFormPage setSubj(String[] subj) {
         for (int i = 0; i < subj.length; i++) {
             subjInput.setValue(subj[i]).pressEnter();
         }
         return this;
     }
 
-    private RegFromPage setDateOfBirth(String datebirth) {
+    private RegFormPage setDateOfBirth(String datebirth) {
         dateOfBirthIput.sendKeys(Keys.CONTROL + "a");
         dateOfBirthIput.sendKeys(datebirth + Keys.ENTER);
         return this;
     }
 
-    private RegFromPage setGender(String gender) {
+    private RegFormPage setGender(String gender) {
         genderInput.find(byText(gender)).click();
         return this;
     }

@@ -1,9 +1,7 @@
 package guru.qa.tests;
 
-import com.codeborne.selenide.Configuration;
-import guru.qa.pages.RegFromPage;
+import guru.qa.pages.RegFormPage;
 import guru.qa.restaker.TestData;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -20,7 +18,7 @@ public class ToolsQATest extends TestBase {
         }
     }
 
-    RegFromPage autopractform = new RegFromPage();
+    RegFormPage autopractform = new RegFormPage();
 
     @Test
     void check() {

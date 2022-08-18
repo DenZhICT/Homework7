@@ -11,12 +11,12 @@ import java.util.List;
 
 
 public class TestData {
-    public String fname, lname, email, gender, phone, birth, pict, address;
+    public String firstName, lastName, email, gender, phone, birth, pict, address;
     public String[] subj, hobbies, stateAndCity;
 
     public TestData() throws IOException {
-        this.fname = randomFirstName();
-        this.lname = randomLastName();
+        this.firstName = randomFirstName();
+        this.lastName = randomLastName();
         this.email = randomEmail();
         this.gender = randomGender();
         this.phone = randomPhoneNumber();
@@ -99,7 +99,7 @@ public class TestData {
 
     private String[] randomArrayMaker(List<String> list) {
         RandomService faker = new Faker().random();
-        int randomLen = faker.nextInt(list.size());
+        int randomLen = faker.nextInt(1, list.size());
         String[] array = new String[randomLen];
         int randomIndex;
         for (int i = 0; i < randomLen; i++) {
