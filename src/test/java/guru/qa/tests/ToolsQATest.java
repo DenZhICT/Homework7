@@ -25,7 +25,7 @@ public class ToolsQATest extends TestBase {
         autopractform
                 .openPage()
                 .fillPageForm(data)
-                .checkPageFrom(data);
+                .checkPageForm(data);
     }
 }
 

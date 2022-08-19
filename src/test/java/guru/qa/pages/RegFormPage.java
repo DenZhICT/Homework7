@@ -60,7 +60,7 @@ public class RegFormPage {
         return this;
     }
 
-    public RegFormPage checkPageFrom(TestData data) {
+    public RegFormPage checkPageForm(TestData data) {
         LocalDate time = LocalDate.parse(data.birth, DateTimeFormatter.ofPattern("MM.dd.yyyy"));
         String newTime = time.format(DateTimeFormatter.ofPattern("dd MMMM,yyyy", new Locale("en")));
 
